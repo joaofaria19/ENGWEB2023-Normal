@@ -41,6 +41,13 @@ router.get('/plantas/especies', function(req, res, next) {
   .catch(err => res.status(505).jsonp({erro:err,message:"Erro na obtenção da lista de Espécies"}));
 });
 
+router.get('/plantas/especies/:id', function(req, res, next) {
+  Planta.getPlantaId()
+  .then(response => res.status(201).jsonp(response))
+  .catch(err => res.status(505).jsonp({erro:err,message:"Erro na obtenção da Espécie da planta"}));
+});
+
+
 router.get('/plantas/:id', function(req, res, next) {
   var ID = req.params.id;
   Planta.getId(ID)
